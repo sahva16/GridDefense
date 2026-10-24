@@ -1,0 +1,14 @@
+# Initial unpinned dependency inventory from the notebook; not a tested lockfile.
+numpy
+pandas
+matplotlib
+scipy
+scikit-learn
+tensorflow
+pypower
+h5py
+seaborn
+xgboost
+lightgbm
+# The external benchmark section may need the fdia-graph package.
+fdia-graph
