@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "griddefense"
+version = "1.0.0"
+description = "Physics-aware detection, classification and localisation of false data injection attacks on the IEEE 14-bus system"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy", "pandas", "scikit-learn", "scipy", "tensorflow", "pypower", "joblib", "matplotlib",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

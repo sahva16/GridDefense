@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Trained models are large — publish them as a GitHub Release, not in git
+models/trained/
+*.h5
+*.keras
+*.joblib
+*.pkl
+
+# Local outputs of the package scripts
+results/package_run/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
