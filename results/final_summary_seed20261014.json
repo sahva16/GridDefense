@@ -1,0 +1,193 @@
+{
+  "AE alone": {
+    "detection": 99.4,
+    "detection_95ci": [
+      99.17050171309964,
+      99.56628041652881
+    ],
+    "false_alarm": 3.66,
+    "false_alarm_95ci": [
+      3.174068493806301,
+      4.217084735344678
+    ],
+    "precision": 97.02293801854563,
+    "f1": 0.9819708570017288,
+    "roc_auc": 0.9990467333333334,
+    "per_class_recall": {
+      "Normal": 96.34,
+      "Additive": 99.15,
+      "Scaling": 99.05000000000001,
+      "Coordinated": 100.0
+    },
+    "TN_FP_FN_TP": [
+      4817,
+      183,
+      36,
+      5964
+    ]
+  },
+  "RF alone": {
+    "detection": 99.33333333333333,
+    "detection_95ci": [
+      99.09351436854786,
+      99.51001974201226
+    ],
+    "false_alarm": 0.42,
+    "false_alarm_95ci": [
+      0.2748753300475664,
+      0.6412527903949351
+    ],
+    "precision": 99.64888814579503,
+    "f1": 0.9949086052917119,
+    "roc_auc": 0.9997374666666667,
+    "per_class_recall": {
+      "Normal": 99.58,
+      "Additive": 99.25,
+      "Scaling": 99.05000000000001,
+      "Coordinated": 99.7
+    },
+    "TN_FP_FN_TP": [
+      4979,
+      21,
+      40,
+      5960
+    ]
+  },
+  "Physics alone": {
+    "detection": 99.1,
+    "detection_95ci": [
+      98.82763516192146,
+      99.30953088189955
+    ],
+    "false_alarm": 1.7000000000000002,
+    "false_alarm_95ci": [
+      1.3769835859113388,
+      2.097179145378957
+    ],
+    "precision": 98.59061515503234,
+    "f1": 0.9884465131742998,
+    "roc_auc": 0.9971923166666667,
+    "per_class_recall": {
+      "Normal": 98.3,
+      "Additive": 99.15,
+      "Scaling": 99.2,
+      "Coordinated": 98.95
+    },
+    "TN_FP_FN_TP": [
+      4915,
+      85,
+      54,
+      5946
+    ]
+  },
+  "2-of-3 voting": {
+    "detection": 99.51666666666667,
+    "detection_95ci": [
+      99.3067113985739,
+      99.66325476442412
+    ],
+    "false_alarm": 0.36,
+    "false_alarm_95ci": [
+      0.22784219199114786,
+      0.5683780560678634
+    ],
+    "precision": 99.69944898981467,
+    "f1": 0.996079739761448,
+    "roc_auc": null,
+    "per_class_recall": {
+      "Normal": 99.64,
+      "Additive": 99.3,
+      "Scaling": 99.45,
+      "Coordinated": 99.8
+    },
+    "TN_FP_FN_TP": [
+      4982,
+      18,
+      29,
+      5971
+    ]
+  },
+  "Weighted fusion": {
+    "detection": 99.31666666666666,
+    "detection_95ci": [
+      99.07434924442107,
+      99.49587286137198
+    ],
+    "false_alarm": 0.3,
+    "false_alarm_95ci": [
+      0.18189133867023655,
+      0.4944210370052845
+    ],
+    "precision": 99.7489119517911,
+    "f1": 0.9953232002672457,
+    "roc_auc": 0.9997583666666666,
+    "per_class_recall": {
+      "Normal": 99.7,
+      "Additive": 99.1,
+      "Scaling": 99.2,
+      "Coordinated": 99.65
+    },
+    "TN_FP_FN_TP": [
+      4985,
+      15,
+      41,
+      5959
+    ]
+  },
+  "RF 4-class": {
+    "accuracy": 89.54545454545455,
+    "macro_f1": 0.8571053649476503
+  },
+  "Localisation": {
+    "exact_match": 96.35000000000001,
+    "micro_f1": 99.1218610383608,
+    "macro_f1": 99.10919345796478,
+    "false_localisation": 0.8200000000000001,
+    "end_to_end_exact": 95.85000000000001,
+    "end_to_end_micro_f1": 98.97010607521696
+  },
+  "_config": {
+    "DEV_SEED": 42,
+    "TEST_SEED": 20261014,
+    "N_NORMAL": 5000,
+    "N_ATTACK": 2000,
+    "LOAD_MIN": 0.8,
+    "LOAD_MAX": 1.2,
+    "ATTACK_MIN": 0.01,
+    "ATTACK_MAX": 0.03,
+    "VA_ATTACK_MAX_DEG": 0.5,
+    "VM_NOISE_STD": 0.002,
+    "VA_NOISE_STD": 0.115,
+    "PD_NOISE_REL": 0.01,
+    "QD_NOISE_REL": 0.01,
+    "PG_NOISE_REL": 0.01,
+    "QG_NOISE_REL": 0.01,
+    "PD_NOISE_FLOOR": 0.01,
+    "QD_NOISE_FLOOR": 0.01,
+    "USE_S_LOADING": false,
+    "fusion": {
+      "ae_lo": 0.002161893436891729,
+      "ae_hi": 0.20060182409449892,
+      "w_ae": 0.3,
+      "w_rf": 0.4,
+      "w_phys": 0.3,
+      "threshold": 0.39999999999999997,
+      "val_f1": 0.9972206781545303,
+      "ae_threshold": 0.009477330329006693,
+      "physics_Z": 3.5,
+      "physics_votes": 2,
+      "physics_checks": [
+        "P_res",
+        "Q_res",
+        "Va_neighbor",
+        "Vm_neighbor"
+      ]
+    },
+    "physics_checks": [
+      "P_res",
+      "Q_res",
+      "Va_neighbor",
+      "Vm_neighbor"
+    ]
+  }
+}
