@@ -1,6 +1,6 @@
 # GridDefense
 
-**Physics-aware detection, classification and localisation of false data injection attacks (FDIA) on the IEEE 14-bus power system.**
+**Hybrid Machine Learning and Physics-Based Detection and Localisation of False Data Injection Attacks in Smart Grids.**
 
 GridDefense checks one measurement snapshot of the grid at a time and answers four questions:
 
