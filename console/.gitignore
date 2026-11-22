@@ -1,0 +1,5 @@
+backend/data/*.db
+backend/bundle/*
+!backend/bundle/PUT_BUNDLE_HERE.txt
+node_modules/
+__pycache__/

@@ -1,0 +1,95 @@
+{
+  "name": "GridDefense phone alert",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "griddefense-alarm",
+        "options": {}
+      },
+      "id": "5f0c1a52-6b1e-4f0e-9d0a-1c2b3a4d5e61",
+      "name": "GridDefense alarm (webhook)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "0d7c3f4e-2a6b-4c1d-8e9f-a1b2c3d4e5f6"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://ntfy.sh/griddefense-CHANGE-THIS-TO-YOUR-OWN-NAME",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Title",
+              "value": "={{ $json.body.event === 'griddefense.alarm' ? 'GridDefense ALARM: ' + $json.body.attack_type + ' attack, bus ' + $json.body.buses.join(', ') : 'GridDefense test alert' }}"
+            },
+            {
+              "name": "Priority",
+              "value": "={{ $json.body.event === 'griddefense.alarm' ? 'urgent' : 'default' }}"
+            },
+            {
+              "name": "Tags",
+              "value": "rotating_light,zap"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "text/plain",
+        "body": "={{ $json.body.message }}",
+        "options": {}
+      },
+      "id": "8a1e2b3c-4d5f-4a6b-9c7d-0e1f2a3b4c5d",
+      "name": "Push to phone (ntfy, no account)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        320,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "PUT-YOUR-TELEGRAM-CHAT-ID-HERE",
+        "text": "={{ $json.body.message }}",
+        "additionalFields": {}
+      },
+      "id": "c3d4e5f6-a7b8-4c9d-8e0f-1a2b3c4d5e6f",
+      "name": "Telegram message (optional)",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        320,
+        120
+      ],
+      "disabled": true
+    }
+  ],
+  "connections": {
+    "GridDefense alarm (webhook)": {
+      "main": [
+        [
+          {
+            "node": "Push to phone (ntfy, no account)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Telegram message (optional)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false
+}

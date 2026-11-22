@@ -1,0 +1,11 @@
+fastapi>=0.110
+uvicorn[standard]>=0.29
+httpx>=0.27
+joblib>=1.3
+numpy>=1.26
+pandas>=2.0
+scipy>=1.11
+pypower>=5.1.16
+# Must match the scikit-learn version that trained the models in Colab
+# (the notebook's export cell prints it — your run used 1.6.1).
+scikit-learn==1.6.1
