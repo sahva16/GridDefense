@@ -1,0 +1,6 @@
+Put the CONTENTS of MyDrive/GridDefense/app_bundle here (made by notebook/export_bundle_cell.py):
+  griddefense_model.joblib
+  test_snapshots.csv.gz
+  bundle_manifest.json
+  results/
+Without these the console will not start. There are no built-in models.

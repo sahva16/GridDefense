@@ -88,7 +88,8 @@ GridDefense/
 ├── tests/                        checks that the package behaves like the notebook
 ├── data/                         the datasets (see data/README.md)
 ├── results/                      result tables and figures saved by the notebook, MANIFEST.json
-└── models/                       how to get the trained models (see models/README.md)
+├── models/                       how to get the trained models (see models/README.md)
+└── console/                      the operator dashboard (FastAPI + React), demoed at Open Day — see console/README.md
 ```
 
 ---
@@ -131,6 +132,19 @@ print(gd.report(out, 0))       # readable alarm report for snapshot 0
 - `evaluate.py` gave the same independent-test results as the notebook's Section 10 table above, to two decimals: fusion 99.32 % / 0.30 %, RF 89.55 % (macro F1 0.8571), localisation 96.35 % exact, 95.85 % end to end, 5,974 alarms.
 
 On another machine TensorFlow may give slightly different autoencoder numbers (see Reproducibility).
+
+---
+
+## Console (operator dashboard)
+
+`console/` holds a control-room style dashboard that runs the **same trained models** as the notebook on IEEE 14-bus snapshots and shows each decision with its evidence on a 3D network view. It is **simulation only** and never connects to a real grid.
+
+- **Backend:** Python + FastAPI. **Frontend:** React + three.js (built with Vite). **Event log:** SQLite. **Phone alerts:** n8n + ntfy (workflow in `console/n8n/`).
+- The models are not committed: export them from the notebook into `console/backend/bundle/` (see `console/README.md`). On start, the console scores all 11,000 independent-test snapshots and checks every result against the notebook's alarm log before it shows "Notebook models · verified".
+- Run it with `console/START_GridDefense_Windows.bat` or `console/START_GridDefense_Mac_Linux.sh`, then open `http://localhost:8000`.
+- No Python? `console/frontend/dist-preview/index.html` replays recorded results to show the design.
+
+Full setup, features and tests are in `console/README.md`.
 
 ---
 
